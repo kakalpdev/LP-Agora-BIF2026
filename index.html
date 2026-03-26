@@ -36,10 +36,10 @@ header {
 .header-content {
   background-image: url(assets/Hero.png);
   background-size: cover;
-  background-position-y: 64px;
+  background-position-y: 0;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100vh;
+  height: 680px;
 }
 
 nav#bif2026-nav {
@@ -47,7 +47,7 @@ nav#bif2026-nav {
   align-items: center;
   width: 100%;
   min-height: 64px;
-  
+  background: #01464d;
 }
 
 #bif2026-nav .agora-logo {
@@ -67,20 +67,30 @@ section.s1 {
   margin-top: 66px;
 }
 
-.first-txt {
+.first-txt-box {
   border-block:1px solid #879EA6;
   padding: 7px;
+}
+
+.first-txt {
   letter-spacing: 3.1px;
-  font-size: clamp(0.625rem, 0.2813rem + 1.7188vw, 2rem);
+  font-size: clamp(0.8rem, 0.2813rem + 1.7188vw, 2rem);
+  text-align: center;
 }
 
 section.s1 h1 {
   font-size: clamp(4.125rem, 3.5rem + 3.125vw, 6.625rem);
-  margin-block: 6.2vh;
+  margin-block: 38px;
 }
 
-p.header-txt {
+p.header-txt,
+.event-txt {
   font-size: clamp(1rem, 0.875rem + 0.625vw, 1.5rem);
+  font-weight: 200;
+}
+
+.event-txt {
+  text-align: center;
 }
 
 .fnt-upper {
@@ -109,17 +119,43 @@ section.s2 h2 {
 }
 
 section.s2 .event-date {
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
   margin-block: 30px;
-  gap: 10px;
+  gap: 1.5rem;
+}
+
+.event-date div.date-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin: auto 1rem;
+}
+
+div.date-box div:nth-child(n) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 section.s3 {
-  background: #001E1F;
+  background-image: url(assets/s3-Background.png);
+  background-size: cover;
+  background-position: top;
+  background-color: #001E1F;
+}
+
+section.s3 {
   position: relative;
   z-index: 5;
+  padding-top: 150px;
 }
 
 section.s3 .barras {
@@ -147,7 +183,7 @@ section.s3 .subtext {
   margin-top: 46px;
   display: flex;
   flex-direction: column;
-  gap: 6vw;
+  gap: 32px;
 }
 
 section.s3 .subtext p:nth-child(n) {
@@ -209,6 +245,7 @@ div.member-box {
   position: absolute;
   inset: 0;
   width: 100%;
+  scale: .9;
   height: auto;
   object-fit: cover;
   object-position: top;
@@ -222,15 +259,17 @@ div.member-box {
 
 .member-box .member-bio {
   position: absolute;
-  bottom: 0;
-  padding: 1rem;
+  bottom: 5%;
+  padding: calc(1vw + .6rem);
   z-index: 2;
 }
 
 
 
 .member-bio .member-name {
-  font-size: clamp(1rem, 0.875rem + 0.625vw, 1.5rem);
+  font-size: clamp(1rem, 0.875rem + 0.625vw, 2.5rem);
+  margin: 1rem auto;
+  font-weight: 200;
 }
 
 .member-bio .member-title {
@@ -469,6 +508,14 @@ footer .footer-links a:hover {
     max-height: 670px;
   }
 
+  section.s1 h1 {
+    margin-block: 60px;
+  }
+
+  section.s3 {
+    background-image: url(assets/s3-Background-Desktop.png);
+  }
+
   #bif2026-nav .agora-logo {
     margin: unset;
   }
@@ -481,11 +528,8 @@ footer .footer-links a:hover {
     padding-block: 110px;
   } 
 
-  .first-txt {
-    max-width: 588px;
-  }
-
-  p.header-txt {
+  p.header-txt,
+  .event-txt {
     text-align: left;
     max-width: 343px;
   }
@@ -494,13 +538,19 @@ footer .footer-links a:hover {
     padding-inline: 80px;
   }
 
-  section.s2 {
-    flex-direction: row;
-    align-items: center;
-    gap: 10%;
-    max-height: 110px;
+  .first-txt-box {
+    max-width: 580px;
+    width: max-content;
   }
-  
+
+  section.s2 {
+    align-items: center;
+  }
+
+  .event-txt {
+    text-align: center;
+  }
+
   section.s3 h2 {
     text-align: left;
     
@@ -511,8 +561,8 @@ footer .footer-links a:hover {
   }
 
   section.s3 .subtext {
-    flex-direction: row;
     text-align: left;
+    max-width: 880px;
   }
 
   section.s3 .barras {
@@ -527,7 +577,8 @@ footer .footer-links a:hover {
   }
 
   .member-box .member-card {
-    max-height: 385px;
+    max-height: 320px;
+    height: 100dvh;
     max-width: 100%;
   }
 
@@ -555,8 +606,18 @@ footer .footer-links a:hover {
 }
 
 @media (min-width: 720px) {
-  div.member-box {
-    grid-template-columns: repeat(4, minmax(auto, 1fr));
+
+  .header-content {
+    height: 670px;
+  }
+
+  section.s2 .event-date .event-txt {
+    text-align: center;
+  }
+
+  .event-date div.date-box {
+    flex-direction: row;
+    justify-content: center;
   }
 
   .social-icons {
@@ -571,7 +632,30 @@ footer .footer-links a:hover {
   .footer-links {
     justify-content: flex-end;
   }
+}
 
+@media (min-width: 992px) {
+   div.member-box {
+    grid-template-columns: repeat(4, minmax(auto, 1fr));
+  }
+
+  section.s2 .event-date .event-txt {
+    text-align: left;
+  }
+
+  section.s2 .event-date {
+    flex-direction: row;
+  }
+
+  .event-date div.date-box {
+    justify-content: space-around;
+    gap: 2rem;
+    flex-basis: 60%;
+  }
+
+  .member-box .member-card {
+    max-height: 385px;
+  }
 }
   </style>
 
@@ -623,7 +707,9 @@ footer .footer-links a:hover {
         </nav>
         
         <section class="s1 pdd-00">
-          <h4 class="first-txt fnt-upper" style="text-align: center;">bradesco investment forum</h4>
+          <div class="first-txt-box">
+            <h4 class="first-txt fnt-upper">bradesco investment forum</h4>
+          </div>
           <h1>BIF <span style="font-weight: 400;">2026</span></h1>
           <p class="header-txt">
             Líderes e especialistas reunidos para discutir as tendências que moldam o futuro do mercado financeiro.
@@ -634,24 +720,27 @@ footer .footer-links a:hover {
     </header>
     
     <main id="bif2026-main">
-      <section class="s2">
-        
+      <section class="s2 pdd-00">
         <div class="event-date">
-          <img src="assets/calendario-mes.png" style="width: fit-content;">
-          <h2>7 E 8 DE ABRIL</h2>
+          <p class="event-txt">
+            Uma oportunidade de ampliar as perspectivas e compreender as transformações que impulsionam a economia global.
+          </p>
+          <div class="date-box">
+            <div>
+              <img src="assets/calendario-mes.png" style="width: fit-content;">
+              <h2>7 E 8 DE ABRIL</h2>
+            </div>
+            <a class="btn-default" href="#">
+              Assistir à transmissão
+            </a>
+          </div>
         </div>
-        <a class="btn-default" href="#">
-          Assistir à transmissão
-        </a>
       </section>
 
       <section class="s3 pdd-00 pdd-01">
         <h2>
           A Ágora, em parceria com o Bradesco BBI, convida você para o 12º Fórum Anual de Investimentos.
         </h2>
-        <p class="p1">
-          Uma oportunidade de ampliar as perspectivas e compreender as transformações que impulsionam a economia global.
-        </p>
         <div class="subtext">
           <p>
             O Bradesco Investment Forum (BIF) é uma conferência promovida anualmente pelo Bradesco BBI, que reúne líderes empresariais, gestores de recursos, executivos C-level, políticos e grandes investidores para discutir as perspectivas econômicas e apresentar oportunidades de investimento no Brasil e no exterior.
@@ -663,8 +752,6 @@ footer .footer-links a:hover {
             Junte-se a nós através da transmissão online e fique por dentro das tendências globais para os investimentos.
           </p>
         </div>
-        <img class="barras" src="assets/Barras.png">
-      
       </section>
 
       <section class="s4 pdd-00 pdd-01">
@@ -683,35 +770,35 @@ footer .footer-links a:hover {
           <div class="member-card">
             <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome</p>
+              <p class="member-name">Nome e Sobrenome do Participante</p>
               <p class="member-title">Descrição do participante</p>
             </div>
           </div>
           <div class="member-card">
             <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome</p>
+              <p class="member-name">Nome e Sobrenome do Participante</p>
               <p class="member-title">Descrição do participante</p>
             </div>
           </div>
           <div class="member-card">
             <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome</p>
+              <p class="member-name">Nome e Sobrenome do Participante</p>
               <p class="member-title">Descrição do participante</p>
             </div>
           </div>
           <div class="member-card">
             <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome</p>
+              <p class="member-name">Nome e Sobrenome do Participante</p>
               <p class="member-title">Descrição do participante</p>
             </div>
           </div>
           <div class="member-card">
             <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome</p>
+              <p class="member-name">Nome e Sobrenome do Participante</p>
               <p class="member-title">Descrição do participante</p>
             </div>
           </div>
@@ -807,6 +894,6 @@ footer .footer-links a:hover {
     </footer>
 
 
-<!-- BBDA-AGORA_LP-BIF-2026_v2 -->
-</body>
+  </body>
+  <!-- BBDA-AGORA_LP-BIF-2026_v2 -->
 </html>
