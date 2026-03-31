@@ -214,20 +214,20 @@ div.title-container {
 }
 
 div.member-box {
-  display: inline-grid;
-  row-gap: 16px;
-  column-gap: 16px;
-  align-self: stretch;
-  grid-template-rows: repeat(2,fit-content(100%));
-  grid-template-columns: repeat(2,minmax(0,1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   margin-block: 28px;
+  width: 100%;
 }
 
 .member-box .member-card {
   background: var(--principais-emerald-green, #01464D);
   position: relative;
   border-radius: 6px;
-  width: 100%;
+  width: calc(50% - 1rem);
   height: 255px;
   overflow: hidden;
 }
@@ -236,7 +236,7 @@ div.member-box {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 30, 31, 0.00) 0%, var(--Emerald-Shades-1000, #001E1F) 82.6%);
+  /* background: linear-gradient(180deg, rgba(0, 30, 31, 0.00) 0%, var(--Emerald-Shades-1000, #001E1F) 82.6%); */
   z-index: 1;
   pointer-events: none;
 }
@@ -245,26 +245,24 @@ div.member-box {
   position: absolute;
   inset: 0;
   width: 100%;
-  scale: .9;
-  height: auto;
+  scale: 1;
+  height: 100%;
   object-fit: cover;
   object-position: top;
-  filter: brightness(0.85);
+  filter: brightness(0.95);
   transition: filter 0.2s ease;
 }
 
 .member-box .member-card:hover .member-photo {
-  filter: brightness(1);
+  filter: brightness(1.1);
 }
 
 .member-box .member-bio {
   position: absolute;
-  bottom: 5%;
+  bottom: 0%;
   padding: calc(1vw + .6rem);
   z-index: 2;
 }
-
-
 
 .member-bio .member-name {
   font-size: clamp(1rem, 0.875rem + 0.625vw, 2.5rem);
@@ -274,6 +272,7 @@ div.member-box {
 
 .member-bio .member-title {
   font-size: clamp(0.6875rem, 0.5781rem + 0.5469vw, 1.125rem);
+  opacity: 0.6;
 }
 
 section.s5 {
@@ -458,7 +457,7 @@ footer .footer-links a:hover {
 
 .btn-load-more:hover {
   opacity: 1;
-}
+  }
 
 #showAllMembers {
   display: none;
@@ -477,14 +476,15 @@ footer .footer-links a:hover {
 }
 
 @media (max-width: 380px) {
-  div.member-box {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
   
   .social-icons {
     gap: 8vw;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .member-box .member-card {
+    flex: 1 1 calc(100% - 1rem);
   }
 }
 
@@ -576,10 +576,14 @@ footer .footer-links a:hover {
     margin-block: 50px;
   }
 
+  .member-box .member-bio {
+    bottom: 5%;
+  }
   .member-box .member-card {
     max-height: 320px;
     height: 100dvh;
     max-width: 100%;
+    flex: 1 1 calc(50% - 1rem);
   }
 
   section.s5 .title-container::after {
@@ -635,9 +639,6 @@ footer .footer-links a:hover {
 }
 
 @media (min-width: 992px) {
-   div.member-box {
-    grid-template-columns: repeat(4, minmax(auto, 1fr));
-  }
 
   section.s2 .event-date .event-txt {
     text-align: left;
@@ -655,6 +656,8 @@ footer .footer-links a:hover {
 
   .member-box .member-card {
     max-height: 385px;
+    max-width: 25%;
+    flex: 1 1 calc(25% - 1rem);
   }
 }
   </style>
@@ -768,38 +771,101 @@ footer .footer-links a:hover {
         <input type="checkbox" id="showAllMembers">
         <div class="member-box">
           <div class="member-card">
-            <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
+            <img class="member-photo" src="assets/p1.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome do Participante</p>
-              <p class="member-title">Descrição do participante</p>
+              <p class="member-name">Fernando Queiroz</p>
+              <p class="member-title">CEO da Minerva Foods</p>
             </div>
           </div>
           <div class="member-card">
-            <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
+            <img class="member-photo" src="assets/p2.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome do Participante</p>
-              <p class="member-title">Descrição do participante</p>
+              <p class="member-name">Gilberto Tomazoni</p>
+              <p class="member-title">CEO da JBS</p>
             </div>
           </div>
           <div class="member-card">
-            <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
+            <img class="member-photo" src="assets/p3.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome do Participante</p>
-              <p class="member-title">Descrição do participante</p>
+              <p class="member-name">Miguel Gularte</p>
+              <p class="member-title">CEO da BRF</p>
             </div>
           </div>
           <div class="member-card">
-            <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
+            <img class="member-photo" src="assets/p4.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome do Participante</p>
-              <p class="member-title">Descrição do participante</p>
+              <p class="member-name">Carlos Marinelli</p>
+              <p class="member-title">CEO da BradSaúde</p>
             </div>
           </div>
           <div class="member-card">
-            <img class="member-photo" src="assets/foto-membro1.png" alt="Foto do participante">
+            <img class="member-photo" src="assets/p5.png" alt="Foto do participante">
             <div class="member-bio">
-              <p class="member-name">Nome e Sobrenome do Participante</p>
-              <p class="member-title">Descrição do participante</p>
+              <p class="member-name">Jeane Tsutsui</p>
+              <p class="member-title">CEO do Grupo Fleury</p>
+            </div>
+          </div>
+          <div class="member-card">
+            <img class="member-photo" src="assets/p6.png" alt="Foto do participante">
+            <div class="member-bio">
+              <p class="member-name">José Ricardo Dias Salvador</p>
+              <p class="member-title">CEO da Mater Dei</p>
+            </div>
+          </div>
+          <div class="member-card">
+            <img class="member-photo" src="assets/p7.png" alt="Foto do participante">
+            <div class="member-bio">
+              <p class="member-name">Beto Abreu</p>
+              <p class="member-title">CEO da Suzano</p>
+            </div>
+          </div>
+          <div class="member-card">
+            <img class="member-photo" src="assets/p8.png" alt="Foto do participante">
+            <div class="member-bio">
+              <p class="member-name">Marcelo Guidotti</p>
+              <p class="member-title">CEO da EcoRodovias</p>
+            </div>
+          </div>
+          <div class="member-card">
+            <img class="member-photo" src="assets/p9.png" alt="Foto do participante">
+            <div class="member-bio">
+              <p class="member-name">Miguel Setas</p>
+              <p class="member-title">CEO da Motiva</p>
+            </div>
+          </div>
+          <div class="member-card">
+            <img class="member-photo" src="assets/p10.png" alt="Foto do participante">
+            <div class="member-bio">
+              <p class="member-name">André Raduan</p>
+              <p class="member-title">Sócio da Genoa Capital</p>
+            </div>
+          </div>
+          <div class="member-card">
+            <img class="member-photo" src="assets/p11.png" alt="Foto do participante">
+            <div class="member-bio">
+              <p class="member-name">Bruno Cordeiro</p>
+              <p class="member-title">Sócio da Kapitalo Investimentos</p>
+            </div>
+          </div>
+          <div class="member-card">
+            <img class="member-photo" src="assets/p12.png" alt="Foto do participante">
+            <div class="member-bio">
+              <p class="member-name">Rodrigo Azevedo</p>
+              <p class="member-title">Sócio da Ibiuna Investimentos</p>
+            </div>
+          </div>
+          <div class="member-card">
+            <img class="member-photo" src="assets/p13.png" alt="Foto do participante">
+            <div class="member-bio">
+              <p class="member-name">André Lion</p>
+              <p class="member-title">Sócio e gestor de Portfólio da Ibiuna Investimentos</p>
+            </div>
+          </div>
+          <div class="member-card">
+            <img class="member-photo" src="assets/p14.png" alt="Foto do participante">
+            <div class="member-bio">
+              <p class="member-name">Sara Delfim</p>
+              <p class="member-title">Sócia da Dahlia Capital</p>
             </div>
           </div>
         </div>
